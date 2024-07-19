@@ -19,6 +19,12 @@ interface Student {
     matric_no: string;
     role: string;
 }
+interface CourseStudent {
+    name: string;
+    email: string;
+    matric_no: string;
+    role: string;
+}
 interface Lecturer {
     name: string;
     email: string;

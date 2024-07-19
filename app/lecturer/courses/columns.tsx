@@ -17,7 +17,7 @@ export const courses_column: ColumnDef<Course>[] = [
         header: "View Students",
         cell: ({ row }) => {
             return <Link
-                href={`/lecturer/courses/students/?id=${row.original.id}`}
+                href={`/lecturer/courses/students/?id=${row.original.id}&course_code=${row.original.code}&course_name=${row.original.name}`}
                 className="underline">
                 View</Link>
         }

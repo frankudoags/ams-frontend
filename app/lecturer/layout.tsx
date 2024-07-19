@@ -15,7 +15,7 @@ export default function RootLayout({ children }: {
             <div className="w-[17%] h-full border-r">
                 <LecturerSidebar />
             </div>
-            <div className="w-[83%] h-full">
+            <div className="w-[83%] h-full px-8 py-12">
                 {children}
             </div>
         </div>

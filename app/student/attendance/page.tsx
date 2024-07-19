@@ -8,6 +8,7 @@ import { CardHeader, CardTitle, CardDescription, Card } from '@/components/ui/ca
 import { useGetCourseAttendance } from '@/api/get_course_attendance_for_student';
 import { attendance_column } from './columns';
 import { DataTable } from '@/components/ui/data-table';
+import { Progress } from '@/components/ui/progress';
 
 const Attendance = () => {
   const params = useSearchParams();
@@ -34,7 +35,14 @@ const Attendance = () => {
       <CardHeader>
         <CardTitle>{course.name}({course.code}) by {course.lecturer.name}</CardTitle>
         <CardDescription>Attendance records for {course.name}({course.code}) by {course.lecturer.name}</CardDescription>
-        <p>{attendanceLevel}%</p>
+        <div className="flex flex-row py-8 items-center gap-6">
+          <div className="w-[50%]">
+            <Progress value={attendanceLevel || 0} />
+          </div>
+          <div className="w-[30%] font-medium text-sm">
+            {attendanceLevel || 0}% attendance
+          </div>
+        </div>
       </CardHeader>
       {attendance && <DataTable data={attendance} columns={attendance_column} />}
     </Card>

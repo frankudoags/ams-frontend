@@ -12,3 +12,15 @@ interface Attendance {
     timestamp: string;
     present: boolean
 }
+
+interface Student {
+    name: string;
+    email: string;
+    matric_no: string;
+    role: string;
+}
+interface Lecturer {
+    name: string;
+    email: string;
+    role: string;
+}

@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Icons } from '../icons';
+import Cookies from 'js-cookie';
 
 const LecturerSidebar = () => {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ const LecturerSidebar = () => {
 
   const logout = () => {
     router.push('/login')
+    Cookies.remove("access_token");
   }
 
   return (

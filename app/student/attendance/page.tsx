@@ -40,7 +40,7 @@ const Attendance = () => {
             <Progress value={attendanceLevel || 0} />
           </div>
           <div className="w-[30%] font-medium text-sm">
-            {attendanceLevel || 0}% attendance
+            {Math.ceil(attendanceLevel) || 0}% attendance
           </div>
         </div>
       </CardHeader>

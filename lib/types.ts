@@ -20,13 +20,28 @@ interface Student {
     role: string;
 }
 interface CourseStudent {
+    id: number;
     name: string;
     email: string;
     matric_no: string;
     role: string;
+    attendance_level: number
 }
 interface Lecturer {
     name: string;
     email: string;
     role: string;
+}
+
+interface CourseSessionResponse {
+    total_classes_held: number;
+    total_students: number;
+    attendance_records: [
+        {
+            class_date: string;
+            students_present: number;
+            total_students: number;
+            attendance_ratio: string
+        }
+    ];
 }

@@ -13,12 +13,11 @@ import { ScanFaceIcon } from "@/components/icons"
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
-    FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import { useLogin } from "@/api/login"
 
 
 const loginSchema = yup.object().shape({
@@ -38,12 +37,14 @@ const defaultValues: LoginValues = {
 
 export default function Login() {
     const form = useForm<LoginValues>({ resolver: yupResolver(loginSchema), defaultValues, mode: "all" });
-    // const { mutate, isPending } = useLogin();
+    const { mutate, isPending } = useLogin();
 
 
     async function onSubmit({ emailAddress, password }: LoginValues) {
-        // mutate({ emailAddress, password });
-        console.log({ emailAddress, password });
+        let formData = new URLSearchParams();
+        formData.append('username', emailAddress);
+        formData.append('password', password);
+        mutate(formData);
         form.reset()
     }
     return (

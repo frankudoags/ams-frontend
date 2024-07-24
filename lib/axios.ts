@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from 'axios';
 import Cookies from 'js-cookie'
 
 export const getToken = () => {
@@ -10,7 +10,7 @@ export const getToken = () => {
 };
 
 const axiosClient = axios.create({
-    baseURL: "http://127.0.0.1:8000/api/",
+    baseURL: "http://127.0.0.1:8000/",
     headers: { "Content-type": "application/json" }
 });
 
@@ -33,7 +33,7 @@ export default axiosClient;
 
 
 
-export const postRequest = async<T, P>(params: { url: string; payload: P }) => {
+export const postRequest = async<T, P>(params: { url: string; payload?: P }) => {
     const { data } = await axiosClient.post<T>(params.url, params.payload);
 
     return data;

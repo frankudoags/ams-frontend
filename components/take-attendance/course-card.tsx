@@ -8,6 +8,7 @@ import Camera from './camera'
 
 const CourseCard = ({ course }: { course: Course }) => {
     const { data } = useGetCourseSessionDetails(course.id);
+    console.log(data);
     return (
         <section className='my-8 space-y-6'>
             <CardTitle>{course.name}({course.code})</CardTitle>

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import Cookies from 'js-cookie'
 
 export const getToken = () => {
@@ -25,6 +25,20 @@ axiosClient.interceptors.request.use(
         return config;
     }
 );
+
+axiosClient.interceptors.response.use(
+
+    (response) => response,
+    async (error: AxiosError) => {
+        if (error.response && error.response.status === 401) {
+            // Clear access token from cookie
+            Cookies.remove('access_token');
+        }
+
+        return Promise.reject(error);
+    }
+);
+
 
 export default axiosClient;
 

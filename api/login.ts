@@ -1,7 +1,7 @@
 import Cookies from "js-cookie";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import axiosClient, { postRequest } from "@/lib/axios";
+import axiosClient from "@/lib/axios";
 
 
 interface Token {
@@ -9,7 +9,7 @@ interface Token {
     role: "LECTURER" | "STUDENT"
 }
 
-const login = async (payload: URLSearchParams) => {
+const login = async (payload: URLSearchParams): Promise<Token> => {
     const url = `token`;
     const response = await axiosClient.post(url, payload, {
         headers: {

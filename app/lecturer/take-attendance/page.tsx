@@ -26,7 +26,8 @@ export default function Component() {
         <CreateNewSession courses={data!!} />
       </header>
       {
-        data && data.map((course) => (<div className="" key={course.id}>
+        data && data.map((course) => (
+          <div className="" key={course.id}>
           <CourseCard course={course} />
         </div>
         ))

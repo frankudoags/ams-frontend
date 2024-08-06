@@ -8,7 +8,7 @@ export const getCourseSessionDetails = (id: number) => {
 
 export const useGetCourseSessionDetails = (id: number) => {
     return useQuery({
-        queryKey: ["course-session"],
+        queryKey: [`course-session-${id}`],
         queryFn: () => getCourseSessionDetails(id)
     });
 }

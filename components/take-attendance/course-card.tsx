@@ -4,6 +4,7 @@ import { Button } from '../ui/button'
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../ui/card'
 import { useGetCourseSessionDetails } from '@/api/get_course_session_details'
 import { formatDate } from '@/lib/utils'
+import Camera from './camera'
 
 const CourseCard = ({ course }: { course: Course }) => {
     const { data } = useGetCourseSessionDetails(course.id);
@@ -28,9 +29,7 @@ const CourseCard = ({ course }: { course: Course }) => {
                                 </div>
                             </CardContent>
                             <CardFooter>
-                                <Button variant="outline" size="sm">
-                                    Take Attendance
-                                </Button>
+                                <Camera class_date={details.class_date} course_id={course.id} />
                             </CardFooter>
                         </Card>
                     </Fragment>

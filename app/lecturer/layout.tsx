@@ -1,11 +1,7 @@
+"use client";
+
 import LecturerSidebar from "@/components/dashboard/lecturer-sidebar";
 import HOC from "@/components/hoc";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-    title: "Lecturer Dashboard",
-    description: "",
-};
 
 export default function RootLayout({ children }: {
     children: React.ReactNode;

@@ -17,7 +17,7 @@ const CourseCard = ({ course }: { course: Course }) => {
                     <Fragment key={index}>
                         <Card>
                             <CardHeader>
-                                <CardTitle>Introduction to Facial Recognition using Computer Vision</CardTitle>
+                                <CardTitle>{details.title}</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <div className="flex items-center justify-between">

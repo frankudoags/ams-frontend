@@ -4,7 +4,6 @@ import { Input } from "../ui/input"
 import { Icons } from "../icons"
 import { Button } from "../ui/button"
 import { DialogHeader, DialogFooter } from "../ui/dialog"
-import { Textarea } from "../ui/textarea"
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form"
@@ -24,6 +23,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { useCreateSession } from "@/api/create-session"
+import { useState } from "react"
 
 
 const sessionSchema = yup.object().shape({
@@ -31,9 +31,6 @@ const sessionSchema = yup.object().shape({
 
     title: yup.string()
         .required("Please enter a title"),
-    description: yup.string()
-        .required("Please enter a description"),
-
 });
 
 export type SessionValues = yup.InferType<typeof sessionSchema>;
@@ -41,17 +38,18 @@ export type SessionValues = yup.InferType<typeof sessionSchema>;
 const defaultValues: SessionValues = {
     course_id: "",
     title: "",
-    description: ""
 };
 
 export const CreateNewSession = ({ courses }: { courses: Course[] }) => {
+    const [id, setId] = useState(0);
     const form = useForm<SessionValues>({ resolver: yupResolver(sessionSchema), defaultValues, mode: "all" });
-    const { mutate, isPending } = useCreateSession();
+    const { mutate, isPending } = useCreateSession(id);
 
 
-    async function onSubmit({ course_id, title, description }: SessionValues) {
+    async function onSubmit({ course_id, title }: SessionValues) {
         let id = +course_id;
-        mutate({ id, title, description });
+        setId(id);
+        mutate({ id, title });
         form.reset()
     }
     return (
@@ -104,24 +102,6 @@ export const CreateNewSession = ({ courses }: { courses: Course[] }) => {
                                                 placeholder="Enter title for this class"
                                                 {...field}
                                                 error={form.formState.errors.title?.message} />
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="description"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <Label htmlFor="description">Description</Label>
-                                        <FormControl>
-                                            <Textarea
-                                                id="description"
-                                                placeholder="Enter session description"
-                                                rows={3}
-                                                {...field}
-                                            />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

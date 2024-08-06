@@ -39,6 +39,7 @@ interface CourseSessionResponse {
     attendance_records: [
         {
             class_date: string;
+            title: string;
             students_present: number;
             total_students: number;
             attendance_ratio: string

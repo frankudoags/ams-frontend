@@ -54,6 +54,12 @@ const Camera = ({ course_id, class_date }: Props) => {
                         }
                         //send call to markAttendance
                         markAttendance(payload);
+                        //sleep 3 secs, then chase them away
+                        sleep(2000).then(
+                            () => {
+                                setProcessing(false)
+                            });
+
                     }
                 )
 

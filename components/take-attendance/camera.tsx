@@ -16,7 +16,7 @@ const Camera = ({ course_id, class_date }: Props) => {
 
     useEffect(() => {
         const loadModels = async () => {
-            const MODEL_URL = '/models';
+            const MODEL_URL = '/app/components/models';
             await faceapi.loadTinyFaceDetectorModel(MODEL_URL);
         };
 
